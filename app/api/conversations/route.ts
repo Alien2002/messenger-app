@@ -1,7 +1,6 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { NextResponse } from "next/server";
 import prisma from '@/app/libs/prismadb'
-import page from "@/app/users/page";
 import { pusherServer } from "@/app/libs/pusher";
 
 export async function POST (request: Request) {
@@ -97,7 +96,8 @@ export async function POST (request: Request) {
 
         return NextResponse.json(newConversation);
 
-    } catch (error: any) {
+    } catch (error) {
+        console.log(error);
         return new NextResponse('Internal Error', {status: 500});
     }
 }

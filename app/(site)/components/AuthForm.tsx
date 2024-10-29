@@ -3,7 +3,7 @@
 import Button from '@/app/components/Button'
 import Inputs from '@/app/components/inputs/Inputs'
 import React, { useCallback, useEffect, useState } from 'react'
-import { useForm, FieldValues, SubmitHandler, set } from 'react-hook-form'
+import { useForm, FieldValues, SubmitHandler } from 'react-hook-form'
 import AuthSocialButton from './AuthSocialButton'
 import { BsGithub, BsGoogle } from'react-icons/bs'
 import axios from 'axios'
@@ -12,7 +12,6 @@ import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 
 
-type Variant = 'login' |'signup'
 const AuthForm = () => {
     const session = useSession()
     const router = useRouter();
@@ -24,7 +23,7 @@ const AuthForm = () => {
             router.push('/users')
         }
 
-    }, [session?.status])
+    }, [session?.status, router])
 
     const toggleVariant = useCallback(() => {
         if(variant === 'login'){

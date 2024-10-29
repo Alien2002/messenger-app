@@ -25,9 +25,8 @@ const DesktopSidebar = ({currentUser}: DesktopSidebarProps) => {
             <nav className="mt-4 flex flex-col justify-between">
                 <ul role="list" className="flex flex-col items-center space-y-1">
                     {routes.map((item) => {
-                        return <div>
+                        return (<div key={item.label}>
                             <DesktopItem 
-                                key={item.label}
                                 href={item.href}
                                 icon={item.icon}
                                 label={item.label}
@@ -35,6 +34,7 @@ const DesktopSidebar = ({currentUser}: DesktopSidebarProps) => {
                                 active={item.active}
                             />
                         </div>
+                        )
                     })}
                 </ul>
             </nav>

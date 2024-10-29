@@ -14,7 +14,7 @@ export async function POST(req: Request, {params}: {params: Iparams}) {
 
         if (!currentUser?.id || !currentUser?.email) {
             return new NextResponse("Unauthorized", {status: 401})
-        };
+        }
 
         const conversation = await prisma.conversation.findUnique({
             where: {
@@ -71,7 +71,7 @@ export async function POST(req: Request, {params}: {params: Iparams}) {
         await pusherServer.trigger(conversationId!, 'message:update', updatedMessage);
 
         return NextResponse.json(updatedMessage);
-    } catch (error: any) {
+    } catch (error) {
         console.log(error, "ERROR_MESSAGES_SEEN");
         return new NextResponse('Internal Error', {status: 500})
     }
